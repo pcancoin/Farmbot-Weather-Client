@@ -1,0 +1,11 @@
+.home {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home h2 {
+    padding-top: 2rem;
+}

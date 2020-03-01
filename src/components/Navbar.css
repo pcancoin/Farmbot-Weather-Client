@@ -1,0 +1,8 @@
+button.navbar-burger {
+    border: none;
+    background: none;
+}
+
+span[role="img"] {
+    margin-right: 0.4rem;
+}
