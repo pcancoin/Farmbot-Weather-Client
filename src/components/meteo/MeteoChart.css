@@ -1,8 +1,9 @@
-.sensorChart {
+.meteoChart {
     background-color: rgba(255, 255, 255, 1);
     padding: 2rem;
     border-radius: 10px;
     flex-basis: 70%;
+    display: inline-block;
 }
 
 .chart {

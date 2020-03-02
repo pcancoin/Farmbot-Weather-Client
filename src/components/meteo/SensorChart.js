@@ -1,29 +1,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPrecipitation } from "../../actions/MeteoActions";
+import { fetchFbSoilSensor } from "../../actions/FarmbotActions";
 
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 import "./SensorChart.css";
 
 class SensorChart extends Component {
     componentDidMount() {
-        this.props.fetchPrecipitation();
+        this.props.fetchFbSoilSensor();
     }
     render() {
-        var loading = this.props.meteoData.datasets ? "" : "(Loading...)";
+        var loading = this.props.chartData ? false : true;
+        console.log(this.props.chartData, loading);
 
         return (
             <div className="sensorChart">
                 <h3 className="has-text-centered">
-                    Données Darksky des précipitations {loading}
+                    Données du capteur d'humidité de Farmbot
+                    {loading ? " (Loading...)" : ""}
                 </h3>
                 <div className="chart">
-                    <Bar
-                        data={this.props.meteoData}
-                        height={500}
-                        options={{ maintainAspectRatio: false }}
-                    />
+                    {loading ? null : (
+                        <Line
+                            data={this.props.chartData}
+                            height={500}
+                            options={{
+                                maintainAspectRatio: false,
+                                tooltips: {
+                                    callbacks: {
+                                        label: item => ` ${item.yLabel}%`
+                                    },
+                                    mode: "index",
+                                    intersect: false
+                                },
+                                hover: {
+                                    mode: "nearest",
+                                    intersect: true
+                                }
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         );
@@ -31,11 +48,31 @@ class SensorChart extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.meteo);
+    if (!state.farmbot[0]) return {};
+
+    var chartValues = state.farmbot.reduce((acc, val) => {
+        acc.push(val.value);
+        return acc;
+    }, []);
+
+    var chartLabels = state.farmbot.reduce((acc, val) => {
+        acc.push(val.date);
+        return acc;
+    }, []);
 
     return {
-        meteoData: state.meteo
+        chartData: {
+            datasets: [
+                {
+                    data: chartValues,
+                    label: "Humidité du sol (%)",
+                    backgroundColor: "rgba(17,117,184,0.4)",
+                    borderColor: "rgb(17,117,184)"
+                }
+            ],
+            labels: chartLabels
+        }
     };
 };
 
-export default connect(mapStateToProps, { fetchPrecipitation })(SensorChart);
+export default connect(mapStateToProps, { fetchFbSoilSensor })(SensorChart);

@@ -1,6 +1,11 @@
+.meteo {
+    padding: 0 0 3rem 0;
+}
+
 .charts {
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .sensorChart {
@@ -32,6 +37,10 @@
 
 .infos h2 {
     font-size: 2rem;
+}
+
+.infos .temp {
+    font-size: 3.5rem;
 }
 
 .chart {

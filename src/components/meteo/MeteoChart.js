@@ -11,19 +11,29 @@ class MeteoChart extends Component {
         this.props.fetchPrecipitation();
     }
     render() {
-        var loading = this.props.meteoData ? "" : "(Loading...)";
+        var loading = this.props.meteoData ? false : true;
 
         return (
-            <div className="sensorChart">
+            <div className="meteoChart">
                 <h3 className="has-text-centered">
-                    Données Darksky des précipitations {loading}
+                    Données Darksky des précipitations
+                    {loading ? " (Loading...)" : ""}
                 </h3>
                 <div className="chart">
-                    <Bar
-                        data={this.props.meteoData}
-                        height={500}
-                        options={{ maintainAspectRatio: false }}
-                    />
+                    {loading ? null : (
+                        <Bar
+                            data={this.props.meteoData}
+                            height={500}
+                            options={{
+                                maintainAspectRatio: false,
+                                tooltips: {
+                                    callbacks: {
+                                        label: item => ` ${item.yLabel} mm/h`
+                                    }
+                                }
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         );
@@ -31,9 +41,7 @@ class MeteoChart extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.meteo);
-
-    if (!state.meteo.precipitation) return null;
+    if (!state.meteo.precipitation) return {};
 
     return {
         meteoData: state.meteo.precipitation
