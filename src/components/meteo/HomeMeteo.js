@@ -1,111 +1,59 @@
 import React, { Component } from "react";
-import { Bar } from "react-chartjs-2";
+import { connect } from "react-redux";
+import Skycons from "react-skycons";
+
+import MeteoChart from "./MeteoChart";
 
 import "./HomeMeteo.css";
 
-export default class HomeMeteo extends Component {
+const iconMap = new Map([
+    ["partly-cloudy-day", "PARTLY_CLOUDY_DAY"],
+    ["partly-cloudy-night", "PARTLY_CLOUDY_NIGHT"],
+    ["clear-day", "CLEAR_DAY"],
+    ["clear-night", "CLEAR_NIGHT"],
+    ["rain", "RAIN"],
+    ["snow", "SNOW"],
+    ["sleet", "SLEET"],
+    ["wind", "WIND"],
+    ["fog", "FOG"],
+    ["cloudy", "CLOUDY"]
+]);
+
+class HomeMeteo extends Component {
     render() {
+        console.log(iconMap);
+
         return (
             <div>
                 <h1 className="title has-text-centered has-text-white">
                     Météo
                 </h1>
-                <div className="sensorChart">
-                    <Bar
-                        data={{
-                            labels: [
-                                "01/03/2020 : 15h00",
-                                "01/03/2020 : 16h00",
-                                "01/03/2020 : 17h00",
-                                "01/03/2020 : 18h00",
-                                "01/03/2020 : 19h00",
-                                "01/03/2020 : 20h00",
-                                "01/03/2020 : 21h00",
-                                "01/03/2020 : 22h00",
-                                "01/03/2020 : 23h00",
-                                "02/03/2020 : 0h00",
-                                "02/03/2020 : 1h00",
-                                "02/03/2020 : 2h00",
-                                "02/03/2020 : 3h00",
-                                "02/03/2020 : 4h00",
-                                "02/03/2020 : 5h00",
-                                "02/03/2020 : 6h00",
-                                "02/03/2020 : 7h00",
-                                "02/03/2020 : 8h00",
-                                "02/03/2020 : 9h00",
-                                "02/03/2020 : 10h00",
-                                "02/03/2020 : 11h00",
-                                "02/03/2020 : 12h00",
-                                "02/03/2020 : 13h00",
-                                "02/03/2020 : 14h00",
-                                "02/03/2020 : 15h00"
-                            ],
-                            datasets: [
-                                {
-                                    label: "Précipitation",
-                                    backgroundColor: [
-                                        "rgba(20, 80, 120, 0.52)",
-                                        "rgba(20, 80, 120, 0.32)",
-                                        "rgba(20, 80, 120, 0.23)",
-                                        "rgba(20, 80, 120, 0.24)",
-                                        "rgba(20, 80, 120, 0.33)",
-                                        "rgba(20, 80, 120, 0.57)",
-                                        "rgba(20, 80, 120, 0.76)",
-                                        "rgba(20, 80, 120, 0.84)",
-                                        "rgba(20, 80, 120, 0.83)",
-                                        "rgba(20, 80, 120, 0.78)",
-                                        "rgba(20, 80, 120, 0.72)",
-                                        "rgba(20, 80, 120, 0.7)",
-                                        "rgba(20, 80, 120, 0.66)",
-                                        "rgba(20, 80, 120, 0.62)",
-                                        "rgba(20, 80, 120, 0.55)",
-                                        "rgba(20, 80, 120, 0.49)",
-                                        "rgba(20, 80, 120, 0.37)",
-                                        "rgba(20, 80, 120, 0.28)",
-                                        "rgba(20, 80, 120, 0)",
-                                        "rgba(20, 80, 120, 0)",
-                                        "rgba(20, 80, 120, 0.13)",
-                                        "rgba(20, 80, 120, 0.14)",
-                                        "rgba(20, 80, 120, 0.18)",
-                                        "rgba(20, 80, 120, 0.24)",
-                                        "rgba(20, 80, 120, 0.34)"
-                                    ],
-                                    data: [
-                                        0.0246,
-                                        0.0075,
-                                        0.0034,
-                                        0.0027,
-                                        0.0035,
-                                        0.0129,
-                                        0.043,
-                                        0.0706,
-                                        0.0624,
-                                        0.0404,
-                                        0.0264,
-                                        0.0193,
-                                        0.0145,
-                                        0.0109,
-                                        0.0057,
-                                        0.0019,
-                                        0.0006,
-                                        0.0002,
-                                        0,
-                                        0,
-                                        0.0002,
-                                        0.0008,
-                                        0.0021,
-                                        0.0044,
-                                        0.0076
-                                    ]
-                                }
-                            ]
-                        }}
-                        width={100}
-                        height={50}
-                        options={{ maintainAspectRatio: false }}
-                    />
+                <div className="charts">
+                    <MeteoChart />
+                    <div className="infos">
+                        <Skycons
+                            color="white"
+                            icon={iconMap.get(this.props.icon)}
+                            autoplay={true}
+                        />
+                        <h3>{this.props.summary}</h3>
+                        <h3>{this.props.prevSummary}</h3>
+                        <h2>Rennes</h2>
+                        <h3>11°C</h3>
+                    </div>
                 </div>
+                <h1>Sensor</h1>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        icon: state.meteo.icon,
+        summary: state.meteo.summary,
+        prevSummary: state.meteo.prevSummary
+    };
+};
+
+export default connect(mapStateToProps)(HomeMeteo);
