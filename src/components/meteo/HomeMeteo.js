@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Skycons from "react-skycons";
 
+import { fetchCurrentWeather } from "../../actions/MeteoActions";
+
 import MeteoChart from "./MeteoChart";
 import SensorChart from "./SensorChart";
 
@@ -21,6 +23,10 @@ const iconMap = new Map([
 ]);
 
 class HomeMeteo extends Component {
+    componentDidMount() {
+        this.props.fetchCurrentWeather();
+    }
+
     render() {
         return (
             <div className="meteo">
@@ -35,6 +41,7 @@ class HomeMeteo extends Component {
                             icon={iconMap.get(this.props.icon)}
                             autoplay={true}
                         />
+                        <h2>Rennes</h2>
                         <h3 class="temp">
                             {this.props.temp
                                 ? Math.floor(this.props.temp) + "°C"
@@ -42,7 +49,6 @@ class HomeMeteo extends Component {
                         </h3>
                         <h3>{this.props.summary}</h3>
                         <h3>{this.props.prevSummary}</h3>
-                        <h2>Rennes</h2>
                     </div>
                 </div>
                 <SensorChart />
@@ -60,4 +66,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(mapStateToProps)(HomeMeteo);
+export default connect(mapStateToProps, { fetchCurrentWeather })(HomeMeteo);
