@@ -1,0 +1,23 @@
+.reglages {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 3rem;
+
+    background-color: white;
+    border-radius: 15px;
+}
+
+.fields {
+    padding: 2rem; 
+    text-align: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

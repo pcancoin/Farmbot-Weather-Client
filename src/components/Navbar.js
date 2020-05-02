@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./Navbar.css";
 
+import LogButton from './LogButton'
+
 class Navbar extends Component {
     render() {
+        console.log(this.props.user);
+        
         return (
             <nav
                 className="navbar is-fixed-top"
@@ -50,6 +55,8 @@ class Navbar extends Component {
                             </span>
                             Réglages
                         </Link>
+
+                        <LogButton />
                     </div>
                 </div>
             </nav>
@@ -57,4 +64,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);
