@@ -5,13 +5,14 @@ export const fetchUser = () => async dispatch => {
     let res;
     try {
         res = await localApi.get("/auth/current_user");
+        dispatch({
+            type: FETCH_CURRENT_USER,
+            payload: res.data
+        });
     } catch(err) {
         console.log(err);
     }
     
 
-    dispatch({
-        type: FETCH_CURRENT_USER,
-        payload: res.data
-    });
+    
 };

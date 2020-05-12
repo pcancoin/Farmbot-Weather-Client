@@ -24,15 +24,15 @@ class HomeArrosage extends Component {
                 <h1 className="title has-text-centered has-text-dark">
                     Arrosage
                 </h1>
-                <div class="columns">
-                    <div class="column">
+                <div className="columns">
+                    <div className="column is-two-thirds">
                         <h2 className="subtitle has-text-centered has-text-dark">
                             Derniers arrosages
                         </h2>
                         <ListArrosage />
                     </div>
-                    <div class="column">
-                        <button class="button is-success is-large" onClick={this.onClickArrose}>
+                    <div className="column is-one-thirds">
+                        <button className="button is-success is-large" onClick={this.onClickArrose}>
                             Arroser maintenant
                         </button>
                     </div>

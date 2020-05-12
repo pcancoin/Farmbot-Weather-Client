@@ -18,9 +18,9 @@ const ItemArrosage = props => {
     console.log("props", props);
     return (
         <tr>
-            <th>{formaterDate(new Date(props.date))}</th>
-            <td>{props.humidite}%</td>
-            <td>{props.indicateurMeteo}</td>
+            <th className="has-text-centered">{formaterDate(new Date(props.date))}</th>
+            <td className="has-text-centered">{props.humidite}%</td>
+            <td className="has-text-centered">{props.indicateurMeteo}</td>
         </tr>
     );
 };

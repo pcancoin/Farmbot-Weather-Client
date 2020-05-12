@@ -1,6 +1,6 @@
 import { FETCH_ARROSAGES } from "../actions/types";
 
-export default (state = {}, action) => {
+export default (state = null, action) => {
     var newState = { ...state };
     switch (action.type) {
         case FETCH_ARROSAGES:

@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { submitSettings, fetchSettings } from "../../actions/ReglagesActions";
 
 class ReglagesForm extends Component {
+    componentDidMount() {
+        this.props.fetchSettings();
+    }
+
     renderInput = ({ icon, input, label, meta: { touched, error } }) => {
         return (
             <div className="field">
@@ -29,8 +35,8 @@ class ReglagesForm extends Component {
     };
 
     //Appel du onSubmit du composant parent (Reglages.js)
-    onSubmit = (reglages) => {
-        this.props.onSubmit(reglages);
+    onSubmit = reglages => {
+        this.props.submitSettings(reglages);
     };
 
     render() {
@@ -94,4 +100,16 @@ class ReglagesForm extends Component {
     }
 }
 
-export default reduxForm({ form: "reglages" })(ReglagesForm);
+const mapStateToProps = (state, ownProps) => {
+    return {
+        initialValues: state.reglages,
+    };
+};
+
+let wrappedForm = reduxForm({ form: "reglages", enableReinitialize: true })(
+    ReglagesForm
+);
+
+export default connect(mapStateToProps, { fetchSettings, submitSettings })(
+    wrappedForm
+);

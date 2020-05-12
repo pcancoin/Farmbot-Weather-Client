@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactLoading from 'react-loading';
 import { connect } from "react-redux";
 import { fetchArrosages } from "../../actions/ArrosageActions";
 
@@ -10,22 +11,22 @@ class ListeArrosages extends Component {
     }
 
     renderFilamentList = arrosages => {
-        if (Object.keys(arrosages).length === 0) {
-            return null;
-        }
         return arrosages.map(arrosage => (
             <ItemArrosage key={arrosage._id} {...arrosage} />
         ));
     };
 
     render() {
+        if (this.props.arrosages === null) {
+            return <ReactLoading type="spinningBubbles" color="black" height={60} width={60} />;
+        } 
         return (
-            <table className="table">
+            <table className="table is-bordered is-fullwidth">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Humidité</th>
-                        <th>Indicateur météo</th>
+                        <th className="has-text-centered">Date</th>
+                        <th className="has-text-centered">Humidité</th>
+                        <th className="has-text-centered">Indicateur météo</th>
                     </tr>
                 </thead>
                 <tbody>{this.renderFilamentList(this.props.arrosages)}</tbody>
@@ -36,7 +37,7 @@ class ListeArrosages extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        arrosages: Object.values(state.arrosages),
+        arrosages: state.arrosages ? Object.values(state.arrosages) : null,
     };
 };
 
