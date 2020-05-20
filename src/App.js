@@ -15,6 +15,8 @@ import HomeMeteo from "./components/meteo/HomeMeteo";
 import HomeArrosage from "./components/arrosage/HomeArrosage";
 import Reglages from './components/reglages/Reglages'
 import Error404 from "./components/Error404";
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 
 class App extends Component {
 
@@ -37,6 +39,8 @@ class App extends Component {
                         <Route path="/meteo" exact component={HomeMeteo} />
                         <Route path="/arrosage" exact component={HomeArrosage} />
                         <Route path="/reglages" exact component={Reglages} />
+                        <Route path="/auth/login" exact component={Login} />
+                        <Route path="/auth/signup" exact component={Signup} />
                         <Route path="*" status={404} component={Error404}/>
                     </Switch>
                 </div>
