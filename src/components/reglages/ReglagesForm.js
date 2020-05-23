@@ -52,6 +52,18 @@ class ReglagesForm extends Component {
                         component={this.renderInput}
                     />
                     <Field
+                        name="sequenceMountToolID"
+                        label="ID de séquence pour monter l'outil"
+                        icon="🔧"
+                        component={this.renderInput}
+                    />
+                    <Field
+                        name="sequenceUnmountToolID"
+                        label="ID de séquence pour démonter l'outil"
+                        icon="🔧"
+                        component={this.renderInput}
+                    />
+                    <Field
                         name="sensorPin"
                         label="Pin du capteur d'humidité"
                         icon="🔌"
@@ -64,15 +76,15 @@ class ReglagesForm extends Component {
                         component={this.renderInput}
                     />
                     <Field
-                        name="wateringThreshold"
-                        label="Seuil d'arrosage capteur"
+                        name="humidityThreshold"
+                        label="Seuil capteur d'humidité"
                         icon="💦"
                         component={this.renderInput}
                     />
                     <Field
-                        name="weatherThreshold"
-                        label="Seuil d'arrosage météo"
-                        icon="⛅"
+                        name="waterNeed"
+                        label="Besoin en eau d'un plante"
+                        icon="💦"
                         component={this.renderInput}
                     />
                     <Field

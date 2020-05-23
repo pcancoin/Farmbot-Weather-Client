@@ -10,12 +10,12 @@ class LogButton extends Component {
                         <span role="img" aria-label="Icône réglages">
                             🔒
                         </span>
-                        {this.props.user.name}
+                        Bonjour, {this.props.user.username}
                     </a>
                 );
             } else {
                 return (
-                    <a className="navbar-item" href="/api/auth/google">
+                    <a className="navbar-item" href="/auth/login">
                         <span role="img" aria-label="Icône réglages">
                             🔓
                         </span>

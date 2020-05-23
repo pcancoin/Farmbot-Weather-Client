@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import AdminWrapper from "./auth/AdminWrapper";
 
 import "./Navbar.css";
 
-import LogButton from './LogButton'
+import LogButton from "./LogButton";
 
 class Navbar extends Component {
     render() {
         console.log(this.props.user);
-        
+
         return (
             <nav
                 className="navbar is-fixed-top"
@@ -48,13 +49,14 @@ class Navbar extends Component {
                             </span>
                             Arrosage automatique
                         </Link>
-
-                        <Link className="navbar-item" to="/reglages">
-                            <span role="img" aria-label="Icône réglages">
-                                ⚙️
-                            </span>
-                            Réglages
-                        </Link>
+                        <AdminWrapper>
+                            <Link className="navbar-item" to="/reglages">
+                                <span role="img" aria-label="Icône réglages">
+                                    ⚙️
+                                </span>
+                                Réglages
+                            </Link>
+                        </AdminWrapper>
 
                         <LogButton />
                     </div>
@@ -66,8 +68,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        user: state.auth
-    }
-}
+        user: state.auth,
+    };
+};
 
 export default connect(mapStateToProps)(Navbar);

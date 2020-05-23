@@ -8,16 +8,17 @@ class Signup extends Component {
             <div class="auth">
                 <div class="auth-card">
                     <h1 className="title">Se connecter</h1>
-                    <form action="/api/auth/local/login">
+                    <form action="/api/auth/login" method="post">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
                                 <input
                                     class="input"
-                                    type="email"
+                                    type="text"
+                                    name="username"
                                     placeholder="Email"
                                 />
                                 <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
+                                    <i class="fas fa-user"></i>
                                 </span>
                             </p>
                         </div>
@@ -26,6 +27,7 @@ class Signup extends Component {
                                 <input
                                     class="input"
                                     type="password"
+                                    name="password"
                                     placeholder="Password"
                                 />
                                 <span class="icon is-small is-left">
