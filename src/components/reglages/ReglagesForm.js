@@ -45,60 +45,62 @@ class ReglagesForm extends Component {
         return (
             <div className="fields column">
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <Field
-                        name="toolID"
-                        label="ID de l'outil d'arrosage"
-                        icon="🔧"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="sequenceMountToolID"
-                        label="ID de séquence pour monter l'outil"
-                        icon="🔧"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="sequenceUnmountToolID"
-                        label="ID de séquence pour démonter l'outil"
-                        icon="🔧"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="sensorPin"
-                        label="Pin du capteur d'humidité"
-                        icon="🔌"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="valvePin"
-                        label="Pin de l'électrovanne"
-                        icon="🔌"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="humidityThreshold"
-                        label="Seuil capteur d'humidité"
-                        icon="💦"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="waterNeed"
-                        label="Besoin en eau d'un plante"
-                        icon="💦"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="lat"
-                        label="Latitude du Robot"
-                        icon="📍"
-                        component={this.renderInput}
-                    />
-                    <Field
-                        name="long"
-                        label="Longitude du Robot"
-                        icon="📍"
-                        component={this.renderInput}
-                    />
+                    <div className="fields-container">
+                        <Field
+                            name="toolID"
+                            label="ID de l'outil d'arrosage"
+                            icon="🔧"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="sequenceMountToolID"
+                            label="ID de séquence pour monter l'outil"
+                            icon="🔧"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="sequenceUnmountToolID"
+                            label="ID de séquence pour démonter l'outil"
+                            icon="🔧"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="sensorPin"
+                            label="Pin du capteur d'humidité"
+                            icon="🔌"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="valvePin"
+                            label="Pin de l'électrovanne"
+                            icon="🔌"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="humidityThreshold"
+                            label="Seuil capteur d'humidité"
+                            icon="💦"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="waterNeed"
+                            label="Besoin en eau d'un plante"
+                            icon="💦"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="lat"
+                            label="Latitude du Robot"
+                            icon="📍"
+                            component={this.renderInput}
+                        />
+                        <Field
+                            name="long"
+                            label="Longitude du Robot"
+                            icon="📍"
+                            component={this.renderInput}
+                        />
+                    </div>
 
                     <button
                         className="button is-success"

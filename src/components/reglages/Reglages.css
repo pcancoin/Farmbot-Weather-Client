@@ -13,9 +13,24 @@
     justify-content: center;
 }
 
+.reglages .fields-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .fields {
-    padding: 2rem;
     text-align: center;
+}
+
+@media (min-width: 420px) {
+    .fields {
+        padding: 2rem;
+    }
+}
+
+.fields button {
+    margin-top: 2rem;
 }
 
 .field {
@@ -23,4 +38,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-basis: 100%;
+    padding: 0 1rem;
+}
+
+@media (min-width: 950px) {
+    .field {
+        flex-basis: 50%;
+    }
 }
