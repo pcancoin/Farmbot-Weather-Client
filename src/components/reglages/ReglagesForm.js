@@ -35,7 +35,7 @@ class ReglagesForm extends Component {
     };
 
     //Appel du onSubmit du composant parent (Reglages.js)
-    onSubmit = reglages => {
+    onSubmit = (reglages) => {
         this.props.submitSettings(reglages);
     };
 
@@ -43,7 +43,7 @@ class ReglagesForm extends Component {
         console.log("Render form :", this.props);
 
         return (
-            <div className="fields">
+            <div className="fields column">
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     <Field
                         name="toolID"
