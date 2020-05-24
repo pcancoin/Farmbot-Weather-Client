@@ -84,7 +84,7 @@ class ReglagesForm extends Component {
                         />
                         <Field
                             name="waterNeed"
-                            label="Besoin en eau d'un plante"
+                            label="Besoin en eau d'une plante"
                             icon="💦"
                             component={this.renderInput}
                         />
