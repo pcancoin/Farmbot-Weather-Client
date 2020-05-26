@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# :partly_sunny: :seedling: Farmbot-Weather-Client :seedling: :partly_sunny:
 
-## Available Scripts
+Une interface permettant de visualiser les données météo ainsi que de gérer l'arrosage automatique du Farmbot de l'INSA Rennes.
 
-In the project directory, you can run:
+:warning: **Ce repository contient uniquement le code de la partie client. Pour en savoir plus sur le projet et voir le code du serveur, se référer à : [Farmbot-Weather-Server](https://github.com/pcancoin/Farmbot-Weather-Server)**
 
-### `npm start`
+## Table des matières
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [:partly_sunny: :seedling: Farmbot-Weather-Client :seedling: :partly_sunny:](#partly_sunny-seedling-farmbot-weather-client-seedling-partly_sunny)
+  - [Table des matières](#table-des-matières)
+  - [Technologies utilisées](#technologies-utilisées)
+  - [Lancement en standalone](#lancement-en-standalone)
+    - [Prérequis](#prérequis)
+    - [Lancement](#lancement)
+    - [Création d'une version optimisée pour la production](#création-dune-version-optimisée-pour-la-production)
+  - [Architecture du code](#architecture-du-code)
+  - [Contact](#contact)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Technologies utilisées
 
-### `npm test`
+Cette application a été réalisée avec [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   [ReactJS](https://reactjs.org/) - Framework single page web app
+-   [Redux](https://redux.js.org/) - Gestion d'état
+-   [Redux Form](https://redux-form.com/8.3.0/) - Formulaires
+-   [ChartJS](https://github.com/reactjs/react-chartjs) - Graphiques
+-   [React Skycons](https://github.com/roadmanfong/react-skycons) - Icônes météo
 
-### `npm run build`
+## Lancement en standalone
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Ce projet fait partie d'un tout avec un serveur. Pour lancer l'ensemble, merci de vous réferer au repository [Farmbot-Weather-Server](https://github.com/pcancoin/Farmbot-Weather-Server).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Prérequis
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   [NodeJS](https://nodejs.org/en/) avec [npm](https://www.npmjs.com/)
 
-### `npm run eject`
+### Lancement
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Lancer le serveur de développement :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+L'application doit se lancer automatiquement sur votre navigateur, sinon il devrait être accessible depuis [http://localhost:3000/](http://localhost:3000/). Chaque modification et sauvegarde d'un fichier recompilera et affichera la version modifiée automatiquement.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Création d'une version optimisée pour la production
 
-## Learn More
+```sh
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Cela devrait créer une version prête pour la production dans _build/_
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Architecture du code
 
-### Code Splitting
+<!--### Différents dossiers-->
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+-   _public/_ : Page html de base, script de base
+-   _src/_ :
+    -   _actions/_ : Différentes actions de Redux
+    -   _apis/_ : Différentes APIs
+    -   _components/_ : Composants React de l'application
+    -   _reducers/_ : Reducers de Redux
 
-### Analyzing the Bundle Size
+## Contact
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Pablo Cancoin - pablo.cancoin@gmail.com
