@@ -6,15 +6,13 @@ Une interface permettant de visualiser les données météo ainsi que de gérer 
 
 ## Table des matières
 
-- [:partly_sunny: :seedling: Farmbot-Weather-Client :seedling: :partly_sunny:](#partly_sunny-seedling-farmbot-weather-client-seedling-partly_sunny)
-  - [Table des matières](#table-des-matières)
-  - [Technologies utilisées](#technologies-utilisées)
-  - [Lancement en standalone](#lancement-en-standalone)
-    - [Prérequis](#prérequis)
-    - [Lancement](#lancement)
-    - [Création d'une version optimisée pour la production](#création-dune-version-optimisée-pour-la-production)
-  - [Architecture du code](#architecture-du-code)
-  - [Contact](#contact)
+-   [Technologies utilisées](#technologies-utilisées)
+-   [Lancement en standalone](#lancement-en-standalone)
+    -   [Prérequis](#prérequis)
+    -   [Lancement](#lancement)
+    -   [Création d'une version optimisée pour la production](#création-dune-version-optimisée-pour-la-production)
+-   [Architecture du code](#architecture-du-code)
+-   [Contact](#contact)
 
 ## Technologies utilisées
 
